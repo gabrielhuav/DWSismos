@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - ./src:/var/www/html:rw
+    depends_on:
+      - db
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=datawarehouse
+    networks:
+      - app-network
+
+  db:
+    image: postgres:17
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      # Montar archivos SQL en el orden correcto
+      - ./sql/00-datawarehouse_tables.sql:/docker-entrypoint-initdb.d/00-datawarehouse_tables.sql
+      - ./sql/01-dim_zonas.sql:/docker-entrypoint-initdb.d/01-dim_zonas.sql
+      - ./sql/02-dim_tiempo.sql:/docker-entrypoint-initdb.d/02-dim_tiempo.sql
+      - ./sql/03-dim_sismos.sql:/docker-entrypoint-initdb.d/03-dim_sismos.sql
+      - ./sql/04-dim_economia.sql:/docker-entrypoint-initdb.d/04-dim_economia.sql
+      - ./sql/05-fact_impacto_sismos_imputed.sql:/docker-entrypoint-initdb.d/05-fact_impacto_sismos_imputed.sql
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=datawarehouse
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres_data:

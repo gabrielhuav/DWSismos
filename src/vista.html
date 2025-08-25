@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impacto de Sismos en México</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="flex min-h-screen bg-gray-100">
+        <div class="w-1/4 bg-blue-800 p-6">
+            <h1 class="text-2xl font-bold text-white text-center mb-6">
+                Impacto de Sismos en México
+            </h1>
+            
+            <div class="space-y-4">
+                <button onclick="selectFile('std.php', 'Mapa de sismos registrados en México')" 
+                    class="w-full px-4 py-3 bg-blue-600 text-white rounded hover:bg-blue-500">
+                    Sismos en México
+                </button>
+                <button onclick="selectFile('std2.php', 'Mapa de la distribución de la población en México')" 
+                    class="w-full px-4 py-3 bg-blue-600 text-white rounded hover:bg-blue-500">
+                    Población de México
+                </button>
+                <button onclick="selectFile('std3.php', 'Mapa de la distribución económica en México')" 
+                    class="w-full px-4 py-3 bg-blue-600 text-white rounded hover:bg-blue-500">
+                    Economía de México 
+                </button>
+            </div>
+        </div>
+
+        <div id="main-content" class="w-3/4 p-6 flex items-center justify-center">
+            <div class="bg-white rounded-lg shadow-xl p-8 text-center">
+                <h2 class="text-2xl text-gray-600">
+                    Selecciona un archivo del panel lateral para comenzar
+                </h2>
+                <p class="text-gray-400 mt-4">
+                    Explora los datos de impacto sísmico en diferentes años  que permite analizar cómo los sismos afectan a diferentes lugares de México, considerando cuánta gente vive ahí y qué actividad económica tienen
+                </p>
+            </div>
+        </div>
+
+        <div id="iframe-container" style="display:none;" class="fixed inset-0 bg-gray-100 z-50 flex flex-col">
+            <header class="bg-blue-800 text-white p-4 flex justify-between items-center">
+                <h1 id="iframe-title" class="text-2xl font-bold flex-grow">Impacto de Sismos en México</h1>
+                <button onclick="returnToDashboard()" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                    ← Volver al Dashboard
+                </button>
+            </header>
+            
+            <div class="flex-1 p-4">
+                <iframe id="content-iframe" class="w-full h-full border-none rounded-lg shadow-lg"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function selectFile(filePath, fileName) {
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('iframe-container').style.display = 'flex';
+            
+            var contentIframe = document.getElementById('content-iframe');
+            contentIframe.src = filePath;
+            
+            document.getElementById('iframe-title').textContent = fileName;
+        }
+
+        function returnToDashboard() {
+            document.getElementById('iframe-container').style.display = 'none';
+            document.getElementById('main-content').style.display = 'flex';
+            
+            document.getElementById('content-iframe').src = '';
+        }
+    </script>
+</body>
+</html>
