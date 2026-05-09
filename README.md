@@ -49,3 +49,15 @@ Contributions are welcome! Please follow these steps:
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Citar este trabajo
+Si utiliza este repositorio en su trabajo, por favor cite el artículo asociado:
+
+- DOI: 10.24275/AZC2026E1004
+- Enlace: https://doi.org/10.24275/AZC2026E1004
+
+BibTeX sugerido:
+
+```bibtex
+@article{Villa Vargas_Hurtado Avilés_Climent Hernández_2026, title={Cuando México tiembla: la historia contada por los datos}, volume={4}, url={https://azcatl.azc.uam.mx/index.php/azcatl/article/view/75}, DOI={10.24275/AZC2026E1004}, abstractNote={&amp;lt;p&amp;gt;Los sismos son un fenómeno natural impredecible y con un alto impacto. En México, el Servicio Sismológico Nacional genera información detallada de los sismos ocurridos en el país. Aunque valiosa, esta información no siempre es fácil de comprender debido al nivel técnico. Este trabajo propone un sistema que transforma la información sísmica en representaciones visuales, lo que facilita el análisis; adicionalmente, puede relacionar información sísmica con información demográfica y económica del Instituto Nacional de Estadística y Geografía para realizar análisis más amplios. Para garantizar el acceso a este sistema, se utilizan tecnologías abiertas y distribución libre a todos los usuarios interesados.&amp;lt;span class=&amp;quot;Apple-converted-space&amp;quot;&amp;gt; &amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;}, number={6}, journal={AZCATL Revista de Divulgación en Ciencias, Ingeniería e Innovación }, author={Villa Vargas, José Manuel and Hurtado Avilés, Gabriel and Climent Hernández, José Antonio}, year={2026}, month={mar.}, pages={28–33} }
+```
